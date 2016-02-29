@@ -1,0 +1,45 @@
+version: '2'
+
+volumes:
+  db:
+    driver: local
+  php:
+    driver: local
+
+services:
+  db:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+
+  php:
+    build: docker/php
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    ports:
+      - "9000:9000"
+    links:
+      - db
+    volumes:
+      - php:/var/www/html/vendor
+      - php:/var/www/html/.composer
+      - .:/var/www/html
+
+  nginx:
+    build: docker/nginx
+    ports:
+      - "80:80"
+    links:
+      - php
+    volumes_from:
+      - php

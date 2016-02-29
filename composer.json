@@ -1,0 +1,24 @@
+{
+    "name": "leon/wordpress-docker-dev",
+    "authors": [
+        {
+            "name": "Leon Radley",
+            "email": "leon@radley.se"
+        }
+    ],
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "http://wpackagist.org"
+      }
+    ],
+    "require": {
+      "php": ">=5.5",
+      "johnpbloch/wordpress": ">=4.4",
+      "wpackagist-plugin/advanced-custom-fields": ">=4.4",
+      "wpackagist-plugin/codepress-admin-columns": ">=2.4.10"
+    },
+    "extra": {
+      "wordpress-install-dir": "wp"
+    }
+}
