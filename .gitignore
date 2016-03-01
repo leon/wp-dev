@@ -1,7 +1,8 @@
 .DS_Store
-/.composer/
-/wp/
-/vendor/
+.composer/
+wp/
+vendor/
 # Exclude wp-content but not themes
-/wp-content/
-!/wp-content/themes/
+wp-content/plugins/
+wp-content/uploads/
+wp-content/upgrade/
